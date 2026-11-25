@@ -186,6 +186,16 @@ html{scroll-padding-top:70px}
 .proj .thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .proj:hover .thumb{filter:none}
 .proj:hover .thumb img{transform:scale(1.05)}
+.cform{max-width:520px;margin:20px 0 6px;display:grid;gap:14px}
+.cform label{display:grid;gap:6px;font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:14px}
+.cform input,.cform textarea{font:inherit;font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;font-size:16px;color:var(--white);background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+.cform input:focus,.cform textarea:focus{border-color:var(--red);outline:none}
+.cform .btn{justify-self:start;margin-top:4px;background:transparent;color:var(--white);cursor:pointer;font-size:16px}
+.cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cmsg{margin:0;font-size:15px;min-height:1.4em}.cmsg.ok{color:#7be0a4}.cmsg.err{color:#ff8a8a}
+.tool img{width:46px;height:46px;object-fit:contain;animation:bob 3.2s ease-in-out infinite;animation-delay:var(--b,0s)}
+.tool .ti{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:Oswald,sans-serif;font-size:22px;color:var(--red)}
+@media (max-width:600px){.tool img,.tool .ti{width:30px;height:30px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.curtain{display:none}.js .rv,.js .w,.js .big span,.js .rl,.js .rr{opacity:1!important;transform:none!important}.line{width:110px}}
 </style>
 </head>
@@ -269,6 +279,14 @@ html{scroll-padding-top:70px}
 <div class="row rv" style="--d:.2s"><i>☎</i><a href="tel:+919817104880">+91 98171 04880</a></div>
 <div class="row rv" style="--d:.25s"><i>◎</i><a href="https://instagram.com/manpreet_sirohi_23" target="_blank" rel="noopener">@manpreet_sirohi_23</a></div>
 <div class="row rv" style="--d:.3s"><i>⌖</i>Kaithal, Haryana, India</div>
+<form class="cform rv" id="contactForm" style="--d:.35s" novalidate>
+<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label>Name<input type="text" name="name" maxlength="100" autocomplete="name" required></label>
+<label>Email<input type="email" name="email" maxlength="200" autocomplete="email" required></label>
+<label>Message<textarea name="message" rows="4" maxlength="2000" required></textarea></label>
+<button class="btn" type="submit">Send message</button>
+<p class="cmsg" role="status" aria-live="polite"></p>
+</form>
 <a class="btn rv" style="--d:.4s" href="https://instagram.com/manpreet_sirohi_23">Message on Instagram</a>
 <div class="sign rv" style="--d:.5s">Manpreet Sirohi</div>
 </div>
@@ -276,7 +294,10 @@ html{scroll-padding-top:70px}
 </section>
 <footer>© 2026 Manpreet Sirohi</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
 <script>
+function initPortfolio(){
 document.documentElement.classList.add('js');
 // letter drop for the big heading
 document.querySelectorAll('[data-letters]').forEach(function(el){
@@ -342,6 +363,31 @@ document.querySelectorAll('section.panel .wrap').forEach(function(w){var d=docum
   cards[0].classList.add('active');cnt.textContent='1 / '+cards.length;
   if(cards.length<2)nav.style.display='none';
 })();
+
+// contact form: saves the message in Supabase (table: messages)
+(function(){
+  var f=document.getElementById('contactForm');if(!f)return;
+  var msg=f.querySelector('.cmsg'),btn=f.querySelector('button');
+  function g(n){return f.querySelector('[name="'+n+'"]')}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    msg.className='cmsg';
+    if(g('website').value)return; // spam trap
+    var name=g('name').value.trim(),email=g('email').value.trim(),text=g('message').value.trim();
+    if(!name||!email||!text){msg.textContent='Please fill in all the fields.';msg.className='cmsg err';return}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent='Please enter a valid email address.';msg.className='cmsg err';return}
+    if(!window.__sb){msg.textContent='The contact form is not connected yet. Please email me instead.';msg.className='cmsg err';return}
+    var last=0;try{last=+localStorage.getItem('lastMsg')||0}catch(x){}
+    if(Date.now()-last<30000){msg.textContent='Please wait a few seconds before sending another message.';msg.className='cmsg err';return}
+    btn.disabled=true;msg.textContent='Sending...';
+    window.__sb.from('messages').insert({name:name,email:email,message:text}).then(function(r){
+      btn.disabled=false;
+      if(r.error){msg.textContent='Sorry, the message could not be sent. Please email me instead.';msg.className='cmsg err';return}
+      try{localStorage.setItem('lastMsg',String(Date.now()))}catch(x){}
+      f.reset();msg.textContent='Thank you! Your message has been sent.';msg.className='cmsg ok';
+    });
+  });
+})();
 // scroll progress bar and mouse spotlight
 var bar=document.createElement('div');bar.className='progress';document.body.appendChild(bar);
 var spot=document.createElement('div');spot.className='spot';document.body.appendChild(spot);
@@ -355,7 +401,69 @@ document.querySelectorAll('.rv,.sw,.dv').forEach(function(el){io.observe(el)});
 var links=document.querySelectorAll('.tabs a');
 var spy=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}})},{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('.panel').forEach(function(s){spy.observe(s)});
+}
+/* Load projects and tools from Supabase. If anything fails, the built-in content stays. */
+(function(){
+  var started=false;
+  function start(){ if(started)return; started=true; initPortfolio(); }
+  var ok=(typeof SUPABASE_URL!=='undefined'&&typeof SUPABASE_ANON_KEY!=='undefined'&&/^https:\/\//.test(SUPABASE_URL)&&SUPABASE_ANON_KEY.indexOf('YOUR_')!==0&&window.supabase);
+  window.__sb=null;
+  if(ok){try{window.__sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY)}catch(e){window.__sb=null}}
+  function safeUrl(u){
+    if(!u||typeof u!=='string')return '';
+    u=u.trim();
+    if(/^https?:\/\//i.test(u))return u;
+    if(/^[A-Za-z0-9_\-\/.]+$/.test(u)&&u.indexOf('//')!==0)return u;
+    return '';
+  }
+  function mk(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e}
+  function renderProjects(list){
+    var wrap=document.querySelector('.projects');if(!wrap)return;
+    wrap.textContent='';
+    list.forEach(function(p){
+      var link=safeUrl(p.link),cover=safeUrl(p.cover_url);
+      var card=document.createElement(link?'a':'article');card.className='proj rv';
+      if(link){card.href=link;card.target='_blank';card.rel='noopener'}
+      var th=mk('div','thumb');
+      if(cover){var im=document.createElement('img');im.src=cover;im.alt=(p.title||'Project')+' cover';th.appendChild(im)}
+      else{th.textContent=(p.tags&&p.tags[0])||'Project'}
+      var body=mk('div','body');
+      body.appendChild(mk('h4','',p.title||''));
+      if(p.description)body.appendChild(mk('p','',p.description));
+      if(p.tags&&p.tags.length){var tg=mk('div','tags');p.tags.forEach(function(t){tg.appendChild(mk('span','',t))});body.appendChild(tg)}
+      if(link)body.appendChild(mk('span','view','View project'));
+      card.appendChild(th);card.appendChild(body);wrap.appendChild(card);
+    });
+  }
+  function renderTools(list){
+    var wrap=document.querySelector('.tools');if(!wrap)return;
+    wrap.textContent='';
+    list.forEach(function(t,i){
+      var d=mk('div','tool rv');d.style.setProperty('--d',((i%8)*.08).toFixed(2)+'s');
+      var src='';
+      if(t.icon_svg&&/^\s*<svg[\s>]/i.test(t.icon_svg))src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(t.icon_svg);
+      else src=safeUrl(t.icon_url);
+      if(src){var im=document.createElement('img');im.src=src;im.alt='';im.width=46;im.height=46;d.appendChild(im)}
+      else d.appendChild(mk('div','ti',(t.name||'?').charAt(0).toUpperCase()));
+      d.appendChild(mk('span','',t.name||''));
+      wrap.appendChild(d);
+    });
+  }
+  function load(){
+    if(!window.__sb)return Promise.resolve();
+    var timeout=new Promise(function(r){setTimeout(r,4000)});
+    var q=Promise.all([
+      window.__sb.from('projects').select('*').order('sort_order').order('created_at'),
+      window.__sb.from('tools').select('*').order('sort_order').order('created_at')
+    ]).then(function(r){
+      if(started)return;
+      if(!r[0].error&&r[0].data&&r[0].data.length)renderProjects(r[0].data);
+      if(!r[1].error&&r[1].data&&r[1].data.length)renderTools(r[1].data);
+    }).catch(function(){});
+    return Promise.race([q,timeout]);
+  }
+  load().then(start,start);
+})();
 </script>
 </body>
 </html>
-folio
