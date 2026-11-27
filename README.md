@@ -7,7 +7,7 @@ Ye folder aapka poora portfolio hai. Design wahi hai, bas ab projects, tools aur
 | File | Kaam |
 |---|---|
 | `index.html` | Aapka portfolio (design wahi, data Supabase se) |
-| `admin.html` | Admin page (login, projects, tools, page text, messages) |
+| `admin.html` | Admin page (login, projects, tools, page text, messages, profile photo and password settings) |
 | `config.js` | Supabase URL aur anon key (already filled) |
 | `supabase.sql` | Tables, security rules (RLS), storage aur starter data banata hai |
 | `setpassword.sql` | Admin ka password reset karne ke liye (optional) |
@@ -43,6 +43,7 @@ Ports tab me 8000 par "Open in Browser" dabao. Portfolio khulega. Address ke aak
 ## Dhyan rakhna
 
 - **service_role key** kabhi website, GitHub ya kisi ko mat dena.
+- Profile photo setting sirf isi browser me save hoti hai; doosre browser/device par ise phir se set karna hoga.
 - Security rules `supabase.sql` me hain. Unhe mat hatana, warna data khula ho jaayega.
 - Agar Supabase ya config.js sahi nahi hai, to portfolio apna purana content hi dikhata hai, kuch toot'ta nahi.
 - Admin me kisi project ko delete karne par uski photo storage me bachi rehti hai (free space ke liye kabhi kabhi Storage me saaf kar sakti ho).
