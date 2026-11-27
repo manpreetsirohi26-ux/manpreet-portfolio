@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /extracted/
+Disallow: /portfolio-source (1).zip
 Sitemap: https://YOUR-SITE-URL/sitemap.xml

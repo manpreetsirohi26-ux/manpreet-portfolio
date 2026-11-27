@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
 <style>
 :root{
-  --bg:#0b1020;--bg2:#10182e;--panel:rgba(18,26,48,.92);--panel2:rgba(24,34,60,.95);
-  --ink:#e8ecf8;--muted:#8b96b8;--line:rgba(140,160,220,.14);
-  --accent:#3b82f6;--accent2:#60a5fa;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--purple:#8b5cf6;
-  --grad:linear-gradient(135deg,#1a2450 0%,#0f1a3a 40%,#2a1548 100%);
-  --glow:0 12px 40px rgba(59,130,246,.18);
+  --bg:#07070d;--bg2:#0c0c16;--panel:rgba(255,255,255,.045);--panel2:rgba(255,255,255,.07);
+  --ink:#f5f7ff;--muted:#a9adc4;--line:rgba(255,255,255,.1);
+  --accent:#c0121b;--accent2:#ff5c6a;--green:#5ee0a0;--red:#ff6b75;--amber:#f59e0b;--purple:#8f0d14;
+  --grad:linear-gradient(135deg,#07070d 0%,#0c0c16 55%,#2a090d 100%);
+  --glow:0 12px 40px rgba(192,18,27,.18);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -24,8 +24,8 @@ h1{font-size:22px}h2{font-size:16px;margin-bottom:14px;color:#fff}h3{font-size:1
 a{color:var(--accent2);text-decoration:none}
 /* ===== LOGIN ===== */
 .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:
-  radial-gradient(ellipse 50% 40% at 70% 10%,rgba(59,130,246,.25),transparent 60%),
-  radial-gradient(ellipse 40% 35% at 20% 80%,rgba(139,92,246,.2),transparent 60%),
+  radial-gradient(ellipse 50% 40% at 70% 10%,rgba(192,18,27,.28),transparent 60%),
+  radial-gradient(ellipse 40% 35% at 20% 80%,rgba(255,92,106,.16),transparent 60%),
   var(--grad)}
 .login-card{width:100%;max-width:400px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:34px;box-shadow:var(--glow);backdrop-filter:blur(20px)}
 .login-card h1{margin-bottom:6px;color:#fff}.login-card .sub{color:var(--muted);margin:0 0 20px;font-size:14px}
@@ -33,7 +33,7 @@ label{display:grid;gap:6px;font-family:Oswald,sans-serif;text-transform:uppercas
 label small{font-family:Inter,sans-serif;text-transform:none;letter-spacing:0;color:var(--muted);font-size:12px}
 input,textarea,select{font:inherit;font-size:14px;color:var(--ink);background:rgba(10,16,36,.7);border:1px solid var(--line);border-radius:10px;padding:11px 13px;width:100%;text-transform:none;letter-spacing:0;font-family:Inter,sans-serif}
 input[type=file]{padding:9px}
-input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(59,130,246,.2)}
+input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(192,18,27,.2)}
 .btn{display:inline-block;border:1.5px solid var(--accent);background:transparent;color:var(--accent2);border-radius:10px;padding:9px 20px;font-family:Oswald,sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:13px;cursor:pointer;transition:.2s}
 .btn:hover{background:var(--accent);color:#fff}.btn:disabled{opacity:.5;cursor:wait}
 .btn.solid{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.solid:hover{background:#2563eb}
@@ -130,7 +130,7 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 .chart-legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
 /* donut */
 .donut-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
-.donut{width:160px;height:160px;border-radius:50%;background:conic-gradient(#3b82f6 0 43%,#22c55e 43% 79%,#ef4444 79% 100%);display:grid;place-items:center;position:relative;box-shadow:0 0 40px rgba(59,130,246,.25)}
+.donut{width:160px;height:160px;border-radius:50%;background:conic-gradient(#c0121b 0 43%,#ff5c6a 43% 79%,#8f0d14 79% 100%);display:grid;place-items:center;position:relative;box-shadow:0 0 40px rgba(59,130,246,.25)}
 .donut::after{content:'';position:absolute;inset:18px;border-radius:50%;background:#121a32}
 .donut b{position:relative;z-index:1;font-family:Oswald,sans-serif;font-size:32px;color:#fff;font-weight:600}
 .donut small{position:relative;z-index:1;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:-4px}
@@ -272,10 +272,10 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
         </div>
 
         <div class="stat-grid">
-          <div class="statcard" style="--sc:#3b82f6"><i class="ic">P</i><b id="dProjects2">0</b><span>Projects</span><div class="delta">portfolio items</div></div>
-          <div class="statcard" style="--sc:#22c55e"><i class="ic">T</i><b id="dTools2">0</b><span>Tools</span><div class="delta">stack icons</div></div>
-          <div class="statcard" style="--sc:#f59e0b"><i class="ic">M</i><b id="dMessages2">0</b><span>Messages</span><div class="delta">from contact form</div></div>
-          <div class="statcard" style="--sc:#8b5cf6"><i class="ic">A</i><b id="dContent">0</b><span>Text fields</span><div class="delta">page content</div></div>
+<div class="statcard" style="--sc:#c0121b"><i class="ic">P</i><b id="dProjects2">0</b><span>Projects</span><div class="delta">portfolio items</div></div>
+          <div class="statcard" style="--sc:#ff5c6a"><i class="ic">T</i><b id="dTools2">0</b><span>Tools</span><div class="delta">stack icons</div></div>
+          <div class="statcard" style="--sc:#c0121b"><i class="ic">M</i><b id="dMessages2">0</b><span>Messages</span><div class="delta">inbox items</div></div>
+          <div class="statcard" style="--sc:#8f0d14"><i class="ic">A</i><b id="dContent">0</b><span>Text fields</span><div class="delta">page content</div></div>
         </div>
 
         <div class="resume">
@@ -292,11 +292,11 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
           <div class="card">
             <div class="rings">
               <div class="ring">
-                <div class="circ" id="ringProjects" style="--p:75;--ring-c:#3b82f6"><b id="ringProjectsN">0</b></div>
+                <div class="circ" id="ringProjects" style="--p:75;--ring-c:#c0121b"><b id="ringProjectsN">0</b></div>
                 <div class="lab">Projects</div><div class="delta">live from DB</div>
               </div>
               <div class="ring">
-                <div class="circ" id="ringTools" style="--p:60;--ring-c:#22c55e"><b id="ringToolsN">0</b></div>
+                <div class="circ" id="ringTools" style="--p:60;--ring-c:#ff5c6a"><b id="ringToolsN">0</b></div>
                 <div class="lab">Tools</div><div class="delta">live from DB</div>
               </div>
               <div class="ring">
@@ -304,7 +304,7 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
                 <div class="lab">Messages</div><div class="delta down">inbox</div>
               </div>
               <div class="ring">
-                <div class="circ" id="ringText" style="--p:90;--ring-c:#8b5cf6"><b id="ringTextN">0</b></div>
+                <div class="circ" id="ringText" style="--p:90;--ring-c:#8f0d14"><b id="ringTextN">0</b></div>
                 <div class="lab">Text fields</div><div class="delta">editable</div>
               </div>
             </div>
