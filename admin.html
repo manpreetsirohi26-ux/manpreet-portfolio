@@ -37,15 +37,15 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 .btn.sm{padding:6px 14px;font-size:12px}.btn.danger{border-color:var(--red);color:var(--red)}.btn.danger:hover{background:var(--red);color:#fff}
 .err-text{color:var(--red);min-height:1.4em;margin:0 0 10px;font-size:14px}
 /* ===== APP SHELL ===== */
-.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.app{display:grid;grid-template-columns:258px minmax(0,1fr);min-height:100vh}
 /* ===== SIDEBAR ===== */
-.sidebar{background:rgba(11,11,15,.96);border-right:1px solid var(--line);padding:0;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
-.side-top{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
-.side-top .icbtn{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);display:grid;place-items:center;cursor:pointer;font-size:14px}
-.side-top .icbtn:hover{background:rgba(192,18,27,.18);color:#fff}
-.side-top .icbtn.badge{position:relative}
-.side-top .icbtn.badge::after{content:'';position:absolute;top:5px;right:5px;width:7px;height:7px;background:var(--accent);border-radius:50%}
-.profile{padding:24px 16px 18px;text-align:center;border-bottom:1px solid var(--line)}
+.sidebar{background:rgba(11,11,15,.96);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side-brand{display:flex;align-items:center;gap:11px;padding:2px 8px 20px}
+.brand-symbol{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#e32432,#8f0d14);color:#fff;font-size:20px;font-weight:700;box-shadow:0 6px 18px rgba(192,18,27,.24)}
+.side-brand b,.side-brand small{display:block}
+.side-brand b{font-size:13px;letter-spacing:.1em;color:var(--ink)}
+.side-brand small{font-size:9px;letter-spacing:.12em;color:var(--muted);margin-top:2px}
+.profile{padding:18px 14px 15px;text-align:center;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));margin:0 0 20px}
 .profile .avawrap{width:88px;height:88px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(192,18,27,.2),0 8px 20px rgba(0,0,0,.35);margin:0 auto;flex:none}.profile .avawrap img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(2.15);transform-origin:52% 24%;display:block}
 .profile .name{font-family:Inter,system-ui,sans-serif;font-size:16px;text-transform:none;margin-top:12px;color:var(--ink);font-weight:600}
 .profile .role{font-size:12px;color:var(--muted);margin-top:2px}
@@ -55,22 +55,23 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 .profile .mini span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .profile .mini i{font-style:normal;font-size:11px;color:var(--green)}
 .profile .mini i.neg{color:var(--red)}
-.tabs{display:flex;flex-direction:column;gap:2px;padding:12px 10px;flex:1}
-.tabs button{border:0;background:transparent;color:var(--muted);padding:11px 14px;border-radius:9px;font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;transition:.15s}
+.nav-label{padding:0 10px 8px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:600;color:#777780}
+.tabs{display:flex;flex-direction:column;gap:4px;padding:0 2px 16px;flex:1}
+.tabs button{border:0;background:transparent;color:var(--muted);padding:11px 12px;border-radius:9px;font-family:Inter,system-ui,sans-serif;text-transform:none;letter-spacing:0;font-size:13px;font-weight:500;cursor:pointer;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:8px;transition:.15s}
 .tabs button:hover{background:rgba(255,255,255,.05);color:var(--ink)}
 .tabs button[aria-selected=true]{background:linear-gradient(90deg,rgba(192,18,27,.25),rgba(192,18,27,.08));color:#fff;font-weight:600;box-shadow:inset 3px 0 0 var(--accent)}
-.tabs button .ico{width:18px;text-align:center;opacity:.7}
-.tabs button[aria-selected=true] .ico{opacity:1}
-.site-nav{padding:8px 14px 12px;border-top:1px solid var(--line);margin-top:auto}
+.tabs button .ic{display:inline-grid;place-items:center;width:22px;height:22px;margin-right:8px;border-radius:6px;color:#8f8f98;font-size:13px;opacity:.9}
+.tabs button[aria-selected=true] .ic{background:rgba(192,18,27,.2);color:var(--accent2);opacity:1}
+.site-nav{padding:14px 2px 10px;border-top:1px solid var(--line);margin-top:auto}
 .site-nav-title{font-family:Inter,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:var(--muted);padding:6px 4px 8px}
 .site-nav a{display:block;padding:7px 10px;border-radius:8px;color:var(--muted);font-size:13px}
 .site-nav a:hover{background:rgba(255,255,255,.05);color:var(--accent2)}
-.side-foot{padding:12px 16px 18px;border-top:1px solid var(--line)}
+.side-foot{padding:14px 2px 0;border-top:1px solid var(--line)}
 .side-foot .btn{width:100%;text-align:center}
 /* ===== TOPBAR ===== */
 .main{min-width:0;display:flex;flex-direction:column}
-.topbar{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--line);background:rgba(10,10,14,.94);position:sticky;top:0;z-index:20}
-.search{flex:1;max-width:420px;position:relative}
+.topbar{display:flex;align-items:center;gap:18px;padding:15px 32px;border-bottom:1px solid var(--line);background:rgba(10,10,14,.94);position:sticky;top:0;z-index:20}
+.search{flex:1;max-width:480px;position:relative}
 .search input{padding-left:38px;border-radius:9px;background:#15151b}
 .search::before{content:'\1F50D';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;opacity:.6}
 .search-go{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;border:0;background:var(--accent);color:#fff;cursor:pointer;font-size:14px}
@@ -79,7 +80,11 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 .brandmark{font-family:Inter,system-ui,sans-serif;font-size:15px;text-transform:none;letter-spacing:-.01em;color:var(--ink);font-weight:600;display:flex;align-items:center;gap:8px}
 .brandmark .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
 /* ===== CONTENT ===== */
-.content{padding:24px 24px 60px;max-width:1200px;width:100%}
+.content{padding:30px 32px 64px;max-width:1440px;width:100%}
+.dashboard-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.dashboard-heading .crumb{margin:0}
+.dashboard-heading .crumb h1{font-size:30px}
+.dashboard-heading .datebar{margin:0}
 .crumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
 .crumb h1{font-size:26px;color:var(--ink);display:flex;align-items:center;gap:10px}
 .crumb h1 .home{font-size:22px}
@@ -91,12 +96,20 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 .datebar .seg button.on,.datebar .seg button:hover{background:rgba(192,18,27,.22);color:#fff}
 .datebar .dshow{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#111116;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:13px}
 /* resume / circular stats */
-.resume{display:grid;grid-template-columns:1.2fr 2fr;gap:20px;margin-bottom:22px}
+.resume{display:grid;grid-template-columns:minmax(260px,.9fr) minmax(0,2fr);gap:18px;margin-bottom:22px}
 @media(max-width:900px){.resume{grid-template-columns:1fr}}
-.resume .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--glow)}
-.resume h2{font-size:22px;line-height:1.15;margin-bottom:8px}
+.resume .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--glow);margin:0}
+.resume .card:first-child{position:relative;overflow:hidden;background:linear-gradient(145deg,#351015 0%,#1b1115 62%,#151216 100%);border-color:rgba(255,92,106,.2);display:flex;flex-direction:column;justify-content:center}
+.resume .card:first-child::after{content:'';position:absolute;width:180px;height:180px;right:-74px;top:-84px;border-radius:50%;border:1px solid rgba(255,92,106,.2);box-shadow:0 0 0 22px rgba(255,92,106,.035),0 0 0 45px rgba(255,92,106,.025)}
+.resume .eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:#ff9aa1;margin-bottom:12px}
+.resume h2{font-size:25px;line-height:1.2;margin-bottom:10px;position:relative;z-index:1}
 .resume h2 em{font-style:normal;color:var(--accent2)}
 .resume p{color:var(--muted);margin:0;font-size:13px;line-height:1.6}
+.resume .card:first-child p{color:#c9bfc2;max-width:320px}
+.resume .card:first-child .quick{position:relative;z-index:1;gap:8px}
+.resume .card:first-child .quick .btn{border-color:rgba(255,255,255,.2);color:#f4e9eb}
+.resume .card:first-child .quick .btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.resume .card:first-child .quick .btn:first-child{background:var(--accent);border-color:var(--accent);color:#fff}
 .rings{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-around}
 .ring{text-align:center;min-width:120px}
 .ring .circ{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;margin:0 auto 8px;position:relative;background:conic-gradient(var(--ring-c,var(--accent)) calc(var(--p,50)*1%),rgba(255,255,255,.09) 0)}
@@ -174,14 +187,29 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 @media(max-width:900px){
   .app{grid-template-columns:1fr}
   .sidebar{position:relative;height:auto;flex-direction:column}
-  .side-top{display:none}
-  .profile{display:flex;flex-wrap:wrap;align-items:center;gap:16px;text-align:left}
-  .profile .avawrap{width:56px;height:56px}
-  .profile .mini{margin-top:0}
+  .profile{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:2px 12px;text-align:left}
+  .profile .avawrap{width:56px;height:56px;grid-row:1/3;margin:0}
+  .profile .name{margin-top:0}
+  .profile .role{margin-top:0}
+  .profile .mini{grid-column:1/-1;margin-top:12px}
   .tabs{flex-direction:row;flex-wrap:wrap;padding:10px}
   .site-nav{display:none}
   .topbar{flex-wrap:wrap}
   .content{padding:16px 14px 50px}
+  .dashboard-heading{align-items:flex-start;flex-direction:column}
+  .dashboard-heading .datebar{width:100%}
+}
+@media(max-width:600px){
+  .sidebar{padding:14px 12px}
+  .side-brand{padding-bottom:14px}
+  .topbar{padding:12px 14px;gap:10px}
+  .topbar .who{width:100%;margin-left:0;order:3}
+  .search{max-width:none;min-width:160px}
+  .dashboard-heading .crumb{align-items:flex-start;flex-direction:column}
+  .dashboard-heading .crumb .path{padding-left:2px}
+  .dashboard-heading .datebar{gap:6px}
+  .dashboard-heading .datebar .seg button{padding:9px 12px}
+  .resume .card{padding:18px}
 }
 </style>
 </head>
@@ -203,10 +231,9 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 
 <div id="appView" class="app" hidden>
   <aside class="sidebar">
-    <div class="side-top">
-      <button class="icbtn" type="button" title="Back">&#8592;</button>
-      <button class="icbtn badge" type="button" title="Notifications">&#9993;</button>
-      <button class="icbtn" type="button" title="Settings">&#9881;</button>
+    <div class="side-brand">
+      <span class="brand-symbol">M</span>
+      <span><b>MANPREET</b><small>PORTFOLIO ADMIN</small></span>
     </div>
 
     <div class="profile">
@@ -220,6 +247,7 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
       </div>
     </div>
 
+    <div class="nav-label">Workspace</div>
     <nav class="tabs" role="tablist">
       <button role="tab" data-tab="dashboard" aria-selected="true"><span><span class="ic">&#9632;</span> Dashboard</span></button>
       <button role="tab" data-tab="profile" aria-selected="false"><span><span class="ic">&#128100;</span> Profile</span></button>
@@ -255,17 +283,18 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
     <main class="content">
       <!-- DASHBOARD -->
       <section id="tab-dashboard">
-        <div class="crumb">
-          <h1><span class="home">&#127968;</span> Dashboard</h1>
-          <span class="path">Home &nbsp;·&nbsp; <b>Dashboard</b></span>
-        </div>
-
-        <div class="datebar">
-          <div class="seg">
-            <button type="button" class="on">Today</button>
-            <button type="button">Yesterday</button>
+        <div class="dashboard-heading">
+          <div class="crumb">
+            <h1><span class="home">&#127968;</span> Dashboard</h1>
+            <span class="path">Home &nbsp;·&nbsp; <b>Dashboard</b></span>
           </div>
-          <div class="dshow">&#128197; <span id="todayLabel"></span></div>
+          <div class="datebar">
+            <div class="seg">
+              <button type="button" class="on">Today</button>
+              <button type="button">Yesterday</button>
+            </div>
+            <div class="dshow">&#128197; <span id="todayLabel"></span></div>
+          </div>
         </div>
 
         <div class="stat-grid">
@@ -277,8 +306,9 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 
         <div class="resume">
           <div class="card">
-            <h2>Resume<br><em>of the day.</em></h2>
-            <p>Your portfolio admin at a glance. Projects, tools and visitor messages sync live from Supabase — changes show on the site right away.</p>
+            <div class="eyebrow">Portfolio overview</div>
+            <h2>Welcome back,<br><em>Manpreet.</em></h2>
+            <p>Manage your portfolio content, projects and visitor messages from one place.</p>
             <div class="quick" style="margin-top:16px">
               <button class="btn sm" type="button" data-goto="projects">Add project</button>
               <button class="btn sm" type="button" data-goto="tools">Add tool</button>
@@ -549,14 +579,22 @@ if(!configured||!window.supabase){
   $('#loginBtn').disabled=true;return;
 }
 var sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+var messageRefreshTimer=null;
 
 /* ---------- login ---------- */
 function showApp(user){
   $('#loginView').hidden=true;$('#appView').hidden=false;$('#who').textContent='Signed in as '+user.email;
   $('#setWho').textContent=user.email||'—';
   loadDashboard();loadProjects();loadTools();loadMessages();loadContent();
+  if(messageRefreshTimer)clearInterval(messageRefreshTimer);
+  messageRefreshTimer=setInterval(function(){
+    if(document.visibilityState==='visible'){loadMessages();loadDashboard()}
+  },15000);
 }
-function showLogin(){$('#appView').hidden=true;$('#loginView').hidden=false}
+function showLogin(){
+  if(messageRefreshTimer){clearInterval(messageRefreshTimer);messageRefreshTimer=null}
+  $('#appView').hidden=true;$('#loginView').hidden=false
+}
 function handleSession(session){
   if(!session){showLogin();return}
   if((session.user.email||'').toLowerCase()!==ADMIN_EMAIL){
@@ -590,6 +628,7 @@ document.querySelectorAll('.tabs button').forEach(function(b){
   b.addEventListener('click',function(){
     document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false')});
     ['dashboard','projects','tools','content','messages','profile','settings'].forEach(function(n){$('#tab-'+n).hidden=(n!==b.dataset.tab)});
+    if(b.dataset.tab==='messages'){loadMessages();loadDashboard()}
   });
 });
 
@@ -734,10 +773,14 @@ $('#tForm').addEventListener('submit',function(e){
 });
 
 /* ---------- messages ---------- */
+var messageLoadInProgress=false;
 function loadMessages(){
-  sb.from('messages').select('*').order('created_at',{ascending:false}).then(function(r){
-    var box=$('#mList');box.textContent='';
-    if(r.error){box.appendChild(mk('p','empty','Could not load messages.'));return}
+  if(messageLoadInProgress)return Promise.resolve();
+  messageLoadInProgress=true;
+  var box=$('#mList');
+  return sb.from('messages').select('*').order('created_at',{ascending:false}).then(function(r){
+    box.textContent='';
+    if(r.error){box.appendChild(mk('p','empty','Could not load messages: '+r.error.message));return}
     var list=r.data||[];$('#msgCount').textContent=list.length?'('+list.length+')':'';
     if(!list.length)box.appendChild(mk('p','empty','No messages yet.'));
     list.forEach(function(m){
@@ -749,6 +792,11 @@ function loadMessages(){
       d.appendChild(btn('Delete','danger',function(){removeRow('messages',m,'this message',loadMessages)}));
       box.appendChild(d);
     });
+  }).catch(function(err){
+    box.textContent='';
+    box.appendChild(mk('p','empty','Could not load messages: '+(err&&err.message||'Please try again.')));
+  }).then(function(){
+    messageLoadInProgress=false;
   });
 }
 $('#mRefresh').addEventListener('click',loadMessages);

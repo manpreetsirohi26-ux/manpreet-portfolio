@@ -7,7 +7,7 @@ Ye folder aapka poora portfolio hai. Design wahi hai, bas ab projects, tools aur
 | File | Kaam |
 |---|---|
 | `index.html` | Aapka portfolio (design wahi, data Supabase se) |
-| `admin.html` | Admin page (login, projects, tools, page text, messages, portfolio profile and settings) |
+| `admin.html` | Admin page (login, projects, tools, page text, visitor message inbox, portfolio profile and settings) |
 | `favicon.svg` | Browser tab icon |
 | `sitemap.xml` | Search engines ke liye page list |
 | `og-image.jpg` | Social sharing preview image |
@@ -25,6 +25,8 @@ Ye folder aapka poora portfolio hai. Design wahi hai, bas ab projects, tools aur
 3. **Admin user banao:** **Authentication -> Users -> Add user -> Create new user**. Email `manpreetsirohi26@gmail.com` rakho (wahi, warna aap admin nahi maani jaogi), apna password daalo, aur **Auto Confirm User** on rakho.
 4. **Naye signup band karo:** **Authentication -> Sign In / Providers** (ya Settings) me **Allow new users to sign up** ko **off** karo. Isse koi aur account nahi bana sakega.
 5. **Key check karo:** `config.js` me aapki Supabase URL aur anon key already set hai. Agar naya project banaya hai to **Project Settings -> API** se URL aur **anon public key** copy karke wahan paste karo. Sirf **anon** key, kabhi **service_role** nahi.
+
+Portfolio contact form se bheje gaye messages admin ke **Messages** tab me dikhte hain. Admin panel khula ho to inbox 15 seconds ke andar refresh hota hai; tab kholne ya refresh button dabane par bhi latest messages load hote hain.
 
 ### Password bhool gaye?
 
