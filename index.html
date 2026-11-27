@@ -539,6 +539,7 @@ document.querySelectorAll('.panel').forEach(function(s){spy.observe(s)});
         });
       }
     }).catch(function(){});
+    });
     return Promise.race([q,timeout]);
   }
   load().then(start,start);
