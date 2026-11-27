@@ -47,7 +47,7 @@ Ports tab me 8000 par "Open in Browser" dabao. Portfolio khulega. Address ke aak
 ## Dhyan rakhna
 
 - **service_role key** kabhi website, GitHub ya kisi ko mat dena.
-- SEO live karne se pehle `https://YOUR-SITE-URL` ko aapke live domain se `index.html` ke canonical/social/JSON-LD URLs, `robots.txt` ke Sitemap URL, aur `sitemap.xml` ke `<loc>` me replace karo.
+- Live SEO domain: `https://manpreet-portfolio-six.vercel.app/` is `index.html`, `robots.txt`, aur `sitemap.xml` me configured hai.
 - Profile photo setting sirf isi browser me save hoti hai; doosre browser/device par ise phir se set karna hoga.
 - Security rules `supabase.sql` me hain. Unhe mat hatana, warna data khula ho jaayega.
 - Agar Supabase ya config.js sahi nahi hai, to portfolio apna purana content hi dikhata hai, kuch toot'ta nahi.

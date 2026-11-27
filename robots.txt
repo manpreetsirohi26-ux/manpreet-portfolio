@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin.html
 Disallow: /extracted/
 Disallow: /portfolio-source (1).zip
-Sitemap: https://YOUR-SITE-URL/sitemap.xml
+Sitemap: https://manpreet-portfolio-six.vercel.app/sitemap.xml
