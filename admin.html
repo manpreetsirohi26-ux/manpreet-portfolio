@@ -225,6 +225,7 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 
     <nav class="tabs" role="tablist">
       <button role="tab" data-tab="dashboard" aria-selected="true"><span><span class="ic">&#9632;</span> Dashboard</span></button>
+      <button role="tab" data-tab="profile" aria-selected="false"><span><span class="ic">&#128100;</span> Profile</span></button>
       <button role="tab" data-tab="projects" aria-selected="false"><span><span class="ic">&#9638;</span> Projects</span></button>
       <button role="tab" data-tab="tools" aria-selected="false"><span><span class="ic">&#9881;</span> Tools</span></button>
       <button role="tab" data-tab="content" aria-selected="false"><span><span class="ic">&#9998;</span> Page text</span></button>
@@ -414,17 +415,46 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
         </div>
       </section>
 
+      <!-- PROFILE -->
+      <section id="tab-profile" hidden>
+        <div class="crumb"><h1><span class="home">&#128100;</span> Profile</h1><span class="path">Home &nbsp;·&nbsp; <b>Profile</b></span></div>
+        <div class="grid2">
+          <div class="card">
+            <div class="c-head"><h2><i class="ic">&#128100;</i> Profile photo</h2></div>
+            <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+              <div class="avawrap" style="width:96px;height:96px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(59,130,246,.25);flex:none">
+                <img id="setAvatarPreview" src="" alt="Profile photo" style="width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(2.15);transform-origin:52% 24%;display:block">
+              </div>
+              <div style="flex:1;min-width:200px">
+                <label>New photo <small>(JPG, PNG or WebP, up to 2 MB — sidebar me yahi dikhegi)</small>
+                  <input id="setPhoto" type="file" accept="image/jpeg,image/png,image/webp">
+                </label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="btn solid sm" id="setPhotoSave" type="button" disabled>Save photo</button>
+                  <button class="btn sm danger" id="setPhotoReset" type="button">Remove (use default)</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="c-head"><h2>Portfolio profile</h2></div>
+            <form id="profileForm" novalidate>
+              <label>Name<input id="c_hero_name" maxlength="60"></label>
+              <label>Role<input id="c_hero_role" maxlength="80"></label>
+              <label>Tagline<input id="c_hero_tagline" maxlength="160"></label>
+              <label>Intro<textarea id="c_hero_intro" rows="4" maxlength="600"></textarea></label>
+              <button class="btn solid" id="profileSave" type="submit">Save profile</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <!-- PAGE TEXT -->
       <section id="tab-content" hidden>
         <div class="crumb"><h1><span class="home">&#9998;</span> Page text</h1><span class="path">Home &nbsp;·&nbsp; <b>Page text</b></span></div>
         <div class="card">
           <div class="c-head"><h2>Edit portfolio text</h2></div>
           <form id="cForm" novalidate>
-            <h3>Hero</h3>
-            <label>Name<input id="c_hero_name" maxlength="60"></label>
-            <label>Role<input id="c_hero_role" maxlength="80"></label>
-            <label>Tagline<input id="c_hero_tagline" maxlength="160"></label>
-            <label>Intro<textarea id="c_hero_intro" rows="3" maxlength="600"></textarea></label>
             <h3>About</h3>
             <label>Title<input id="c_about_about_title" maxlength="80"></label>
             <label>Text 1<textarea id="c_about_about_text_1" rows="3" maxlength="600"></textarea></label>
@@ -456,24 +486,6 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
 
         <div class="grid2">
           <div class="card">
-            <div class="c-head"><h2><i class="ic">&#128100;</i> Profile photo</h2></div>
-            <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
-              <div class="avawrap" id="setAvatarWrap" style="width:96px;height:96px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);box-shadow:0 0 0 4px rgba(59,130,246,.25);flex:none">
-                <img id="setAvatarPreview" src="" alt="Profile photo" style="width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(2.15);transform-origin:52% 24%;display:block">
-              </div>
-              <div style="flex:1;min-width:200px">
-                <label>New photo <small>(JPG, PNG or WebP, up to 2 MB — sidebar me yahi dikhegi)</small>
-                  <input id="setPhoto" type="file" accept="image/jpeg,image/png,image/webp">
-                </label>
-                <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <button class="btn solid sm" id="setPhotoSave" type="button" disabled>Save photo</button>
-                  <button class="btn sm danger" id="setPhotoReset" type="button">Remove (use default)</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
             <div class="c-head"><h2><i class="ic">&#128274;</i> Change password</h2></div>
             <form id="pwForm" novalidate>
               <label>New password <small>(min 6 characters)</small>
@@ -486,9 +498,6 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
               <button class="btn solid" id="pwSave" type="submit">Update password</button>
             </form>
           </div>
-        </div>
-
-        <div class="grid2">
           <div class="card">
             <div class="c-head"><h2><i class="ic">&#9993;</i> Account</h2></div>
             <div class="item" style="grid-template-columns:1fr auto;border:0;padding:10px 0">
@@ -508,7 +517,7 @@ input:focus,textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 
             <div class="c-head"><h2><i class="ic">&#128295;</i> Quick tips</h2></div>
             <p style="color:var(--muted);margin:0 0 10px;font-size:13px;line-height:1.7">
               &bull; Password badalne ke baad naye password se hi login hoga.<br>
-              &bull; Profile photo sirf is admin panel me dikhti hai (browser me save hoti hai).<br>
+              &bull; Profile photo Profile tab se isi browser me save hoti hai.<br>
               &bull; Projects, tools aur text save karte hi live site par lag jaate hain.
             </p>
           </div>
@@ -583,7 +592,7 @@ $('#logout').addEventListener('click',logout);
 document.querySelectorAll('.tabs button').forEach(function(b){
   b.addEventListener('click',function(){
     document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false')});
-    ['dashboard','projects','tools','content','messages','settings'].forEach(function(n){$('#tab-'+n).hidden=(n!==b.dataset.tab)});
+    ['dashboard','projects','tools','content','messages','profile','settings'].forEach(function(n){$('#tab-'+n).hidden=(n!==b.dataset.tab)});
   });
 });
 
@@ -749,17 +758,34 @@ $('#mRefresh').addEventListener('click',loadMessages);
 
 /* ---------- page text (site_content) ---------- */
 var contentFields=[
-  ['hero','name'],['hero','role'],['hero','tagline'],['hero','intro'],
   ['about','about_title'],['about','about_text_1'],['about','about_text_2'],
   ['contact','contact_title'],['contact','contact_text'],['contact','cta_text']
 ];
+var profileFields=[['hero','name'],['hero','role'],['hero','tagline'],['hero','intro']];
 function loadContent(){
   sb.from('site_content').select('section,field_key,field_value').then(function(r){
     if(r.error)return;
     var map={};(r.data||[]).forEach(function(x){map[x.section+'.'+x.field_key]=x.field_value});
     contentFields.forEach(function(f){var el=$('#c_'+f[0]+'_'+f[1]);if(el)el.value=map[f[0]+'.'+f[1]]||''});
+    profileFields.forEach(function(f){var el=$('#c_'+f[0]+'_'+f[1]);if(el)el.value=map[f[0]+'.'+f[1]]||''});
   });
 }
+$('#profileForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var rows=profileFields.map(function(f){
+    var el=$('#c_'+f[0]+'_'+f[1]);
+    return {section:f[0],field_key:f[1],field_value:el?el.value:''};
+  });
+  $('#profileSave').disabled=true;
+  sb.from('site_content').upsert(rows,{onConflict:'section,field_key'}).then(function(r){
+    $('#profileSave').disabled=false;
+    if(r.error){toast('Could not save profile. Are you signed in as admin?','err');return}
+    toast('Profile saved.','ok');
+  }).catch(function(){
+    $('#profileSave').disabled=false;
+    toast('Could not save profile. Please try again.','err');
+  });
+});
 $('#cForm').addEventListener('submit',function(e){
   e.preventDefault();
   var rows=contentFields.map(function(f){

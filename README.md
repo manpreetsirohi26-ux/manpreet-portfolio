@@ -7,7 +7,7 @@ Ye folder aapka poora portfolio hai. Design wahi hai, bas ab projects, tools aur
 | File | Kaam |
 |---|---|
 | `index.html` | Aapka portfolio (design wahi, data Supabase se) |
-| `admin.html` | Admin page (login, projects, tools, page text, messages, profile photo and password settings) |
+| `admin.html` | Admin page (login, projects, tools, page text, messages, portfolio profile and settings) |
 | `config.js` | Supabase URL aur anon key (already filled) |
 | `supabase.sql` | Tables, security rules (RLS), storage aur starter data banata hai |
 | `setpassword.sql` | Admin ka password reset karne ke liye (optional) |
