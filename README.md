@@ -8,6 +8,10 @@ Ye folder aapka poora portfolio hai. Design wahi hai, bas ab projects, tools aur
 |---|---|
 | `index.html` | Aapka portfolio (design wahi, data Supabase se) |
 | `admin.html` | Admin page (login, projects, tools, page text, messages, portfolio profile and settings) |
+| `favicon.svg` | Browser tab icon |
+| `sitemap.xml` | Search engines ke liye page list |
+| `og-image.jpg` | Social sharing preview image |
+| `manpreet-hero.jpg`, `manpreet-about.jpg` | Portfolio portraits |
 | `config.js` | Supabase URL aur anon key (already filled) |
 | `supabase.sql` | Tables, security rules (RLS), storage aur starter data banata hai |
 | `setpassword.sql` | Admin ka password reset karne ke liye (optional) |
@@ -43,6 +47,7 @@ Ports tab me 8000 par "Open in Browser" dabao. Portfolio khulega. Address ke aak
 ## Dhyan rakhna
 
 - **service_role key** kabhi website, GitHub ya kisi ko mat dena.
+- SEO live karne se pehle `https://YOUR-SITE-URL` ko aapke live domain se `index.html` ke canonical/social/JSON-LD URLs, `robots.txt` ke Sitemap URL, aur `sitemap.xml` ke `<loc>` me replace karo.
 - Profile photo setting sirf isi browser me save hoti hai; doosre browser/device par ise phir se set karna hoga.
 - Security rules `supabase.sql` me hain. Unhe mat hatana, warna data khula ho jaayega.
 - Agar Supabase ya config.js sahi nahi hai, to portfolio apna purana content hi dikhata hai, kuch toot'ta nahi.
